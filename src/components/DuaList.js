@@ -26,6 +26,7 @@ export default function DuaList({ filter, sort }) {
                 throw new Error('Failed to fetch duas')
             }
             const data = await response.json()
+            console.log(data.duas)
             setDuas(data.duas)
             setLoading(false)
         } catch (error) {
@@ -98,7 +99,7 @@ export default function DuaList({ filter, sort }) {
                             />
                         )}
                         <div>
-                            <p className="font-semibold text-gray-600">
+                            <p className="font-semibold text-gray-600 truncate">
                                 {dua.isAnonymous ? 'Anonymous' : (dua.firstName || dua.userId)}
                             </p>
                             <p className="text-sm text-gray-500">{new Date(dua.createdAt).toLocaleDateString()}</p>
