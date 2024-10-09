@@ -3,10 +3,10 @@
 import { useState } from 'react'
 import { useAuth } from '@clerk/nextjs'
 import Link from 'next/link'
-import { UserButton } from '@clerk/nextjs'
 import { Filter, SortDesc, PlusCircle } from 'lucide-react'
 import DuaRequestForm from '@/components/DuaRequestForm'
 import DuaList from '@/components/DuaList'
+import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 
 export default function Home() {
   const { isSignedIn } = useAuth()
@@ -23,18 +23,15 @@ export default function Home() {
               DuaShare
             </Link>
             <div className="flex items-center space-x-4">
-              {isSignedIn ? (
-                <>
-                  <Link href="/dashboard" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
-                    Dashboard
-                  </Link>
-                  <UserButton afterSignOutUrl="/" />
-                </>
-              ) : (
-                <Link href="/sign-up" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">
-                  Sign Up
+              <SignedIn>
+                <Link href="/dashboard" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+                  Dashboard
                 </Link>
-              )}
+                <UserButton afterSignOutUrl="/" />
+              </SignedIn>
+              <SignedOut>
+                <SignInButton className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium" afterSignInUrl="/" />
+              </SignedOut>
             </div>
           </div>
         </div>
