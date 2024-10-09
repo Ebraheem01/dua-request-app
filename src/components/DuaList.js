@@ -98,13 +98,13 @@ export default function DuaList({ filter, sort }) {
                             />
                         )}
                         <div>
-                            <p className="font-semibold">
+                            <p className="font-semibold text-gray-600">
                                 {dua.isAnonymous ? 'Anonymous' : (dua.firstName || dua.userId)}
                             </p>
                             <p className="text-sm text-gray-500">{new Date(dua.createdAt).toLocaleDateString()}</p>
                         </div>
                     </div>
-                    <h3 className="text-xl font-semibold mb-2">{dua.title}</h3>
+                    <h3 className="text-xl font-semibold text-gray-600 mb-2">{dua.title}</h3>
                     <p className="text-gray-700 mb-4">{dua.description}</p>
                     <div className="flex items-center text-sm text-gray-500 mb-4">
                         <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full">{dua.category}</span>

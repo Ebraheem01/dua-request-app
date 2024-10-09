@@ -61,26 +61,31 @@ export default function Home() {
               <select
                 value={filter}
                 onChange={(e) => setFilter(e.target.value)}
-                className="border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                className="p-2 border-gray-300 bg-white text-gray-600 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
               >
                 <option value="all">All Categories</option>
                 <option value="health">Health</option>
                 <option value="success">Success</option>
                 <option value="family">Family</option>
+                <option value="travel">Travel</option>
+                <option value="birthday">Birthday</option>
+                <option value="safety">Safety</option>
+                <option value="death">Death</option>
+                <option value="community">Community</option>
               </select>
-              <Filter className="text-gray-500" />
+              {/* <Filter className="text-gray-500" size={20} /> */}
             </div>
             <div className="flex items-center space-x-4">
               <select
                 value={sort}
                 onChange={(e) => setSort(e.target.value)}
-                className="border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                className="p-2 border-gray-300 bg-white text-gray-600 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
               >
                 <option value="newest">Newest</option>
                 <option value="oldest">Oldest</option>
                 <option value="most-supported">Most Supported</option>
               </select>
-              <SortDesc className="text-gray-500" />
+              {/* <SortDesc className="text-gray-500" size={20} /> */}
             </div>
           </div>
 
