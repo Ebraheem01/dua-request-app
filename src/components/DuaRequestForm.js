@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useAuth, useUser } from '@clerk/nextjs'
+import toast from 'react-hot-toast'
 
 export default function DuaRequestForm({ onClose, onSubmit }) {
     const { userId } = useAuth()
@@ -14,6 +15,8 @@ export default function DuaRequestForm({ onClose, onSubmit }) {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
+            const userIdentifier = user.firstName || user.username || userId
+
             const response = await fetch('/api/duas', {
                 method: 'POST',
                 headers: {
@@ -25,7 +28,7 @@ export default function DuaRequestForm({ onClose, onSubmit }) {
                     description,
                     category,
                     isAnonymous,
-                    firstName: isAnonymous ? null : user.firstName,
+                    userIdentifier: isAnonymous ? null : userIdentifier,
                     profileImageUrl: isAnonymous ? null : user.imageUrl,
                 }),
             })
@@ -40,8 +43,10 @@ export default function DuaRequestForm({ onClose, onSubmit }) {
             setIsAnonymous(false)
             onClose()
             if (onSubmit) onSubmit()
+            toast.success('Dua submitted successfully')
         } catch (error) {
             console.error('Error submitting dua:', error)
+            toast.error('Failed to submit dua. Please try again.')
         }
     }
 

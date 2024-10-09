@@ -10,7 +10,7 @@ export async function POST(req) {
             return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
         }
 
-        const { title, description, category, isAnonymous, firstName, profileImageUrl } = await req.json()
+        const { title, description, category, isAnonymous, userIdentifier, profileImageUrl } = await req.json()
 
         await dbConnect()
         const dua = new Dua({
@@ -19,7 +19,7 @@ export async function POST(req) {
             description,
             category,
             isAnonymous,
-            firstName: isAnonymous ? null : firstName,
+            userIdentifier: isAnonymous ? null : userIdentifier,
             profileImageUrl: isAnonymous ? null : profileImageUrl,
         })
         await dua.save()

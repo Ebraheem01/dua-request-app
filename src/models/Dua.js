@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const DuaSchema = new mongoose.Schema({
     userId: String,
-    firstName: String,
+    userIdentifier: String,
     profileImageUrl: String,
     title: String,
     description: String,
