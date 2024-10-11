@@ -2,27 +2,30 @@
 
 ## 1. Setup and Configuration
 - [x] Initialize Next.js project.
-- [ ] Integrate Clerk for authentication.
-  - [ ] Configure signup, login, and profile management.
-- [ ] Set up MongoDB with Mongoose.
-  - [ ] Create a `duas` collection.
-  - [ ] Create a `users` collection to link requests to users.
-- [ ] Deploy the app on Vercel.
+- [x] Integrate Clerk for authentication.
+  - [x] Configure signup, login, and profile management.
+- [x] Set up MongoDB with Mongoose.
+  - [x] Create a `duas` collection.
+  - [x] Create a `users` collection to link requests to users.
+- [x] Deploy the app on Vercel.
 
 ## 2. Features
 
 ### Dua Requests
-- [ ] Build a form for users to request a Dua.
-  - [ ] Fields: User ID (linked to Clerk), Dua title, description, category (optional), status.
-  - [ ] Save Dua requests to MongoDB.
+- [x] Build a form for users to request a Dua.
+  - [x] Fields: User ID (linked to Clerk), Dua title, description, category (optional), status.
+  - [x] Save Dua requests to MongoDB.
   
 ### Community Interaction
-- [ ] Display a list of public Dua requests.
-  - [ ] Allow users to filter by categories (e.g., Health, Success, Spirituality).
-  - [ ] Add search functionality.
+- [x] Display a list of public Dua requests.
+  - [x] Allow users to filter by categories (e.g., Health, Success, Spirituality).
+  - [x] Add search functionality.
+  - [x] Allow users to support duas
+  - [x] Enable users to comment on Duas.
+  - [] Allow users to sort Duas by date, support count, or popularity.
   
 ### User Profile
-- [ ] Allow users to view their own submitted Duas.
+- [x] Allow users to view their own submitted Duas.
 - [ ] Provide status updates (e.g., pending, answered).
 - [ ] Enable users to make Duas public or private.
 
