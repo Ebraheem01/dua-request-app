@@ -1,5 +1,13 @@
 import mongoose from 'mongoose'
 
+const CommentSchema = new mongoose.Schema({
+    userId: String,
+    comment: String,
+    userIdentifier: String,
+    isAnonymous: Boolean,
+    profileImageUrl: String,
+}, { timestamps: true })
+
 const DuaSchema = new mongoose.Schema({
     userId: String,
     userIdentifier: String,
@@ -10,6 +18,7 @@ const DuaSchema = new mongoose.Schema({
     isAnonymous: Boolean,
     supporters: [String],
     supportCount: { type: Number, default: 0 },
+    comments: [CommentSchema],
     createdAt: { type: Date, default: Date.now }
 })
 

@@ -11,7 +11,6 @@ export async function GET() {
         }
 
         const users = await clerkClient.users.getUserList();
-        console.log(users)
         const simplifiedUsers = users.data.map(user => ({
             id: user.id,
             username: user.username,
