@@ -6,6 +6,8 @@ import { Heart, MessageCircle, Share2, User, ChevronDown, ChevronUp } from 'luci
 import Image from 'next/image'
 import toast from 'react-hot-toast'
 import Link from 'next/link'
+import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+
 
 export default function SharedDua({ params }) {
     const { userId, isSignedIn } = useAuth()
@@ -109,7 +111,13 @@ export default function SharedDua({ params }) {
 
     return (
         <div className="max-w-2xl mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
-            <Link href="/" className="text-blue-600 hover:text-blue-800 mb-4 inline-block">&larr; Back to Home</Link>
+            <div className="flex justify-between items-center mb-4">
+                <Link href="/" className="text-blue-600 hover:text-blue-800 mb-4 inline-block">&larr; Back to Home</Link>
+
+                <SignedOut>
+                    <SignInButton className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium" />
+                </SignedOut>
+            </div>
             <div className="flex items-center mb-4">
                 {dua.isAnonymous ? (
                     <div className="w-10 h-10 bg-gray-300 rounded-full mr-3 flex items-center justify-center">
