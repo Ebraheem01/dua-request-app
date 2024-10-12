@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useAuth } from '@clerk/nextjs'
+import { useUser } from '@clerk/nextjs'
 import { Heart, MessageCircle, Share2, User, ChevronDown, ChevronUp } from 'lucide-react'
 import Image from 'next/image'
 import toast from 'react-hot-toast'
@@ -25,6 +26,7 @@ const PREDEFINED_COMMENTS = [
 
 export default function DuaList({ filter, sort }) {
     const { userId, isSignedIn } = useAuth()
+    const { user } = useUser()
     const [duas, setDuas] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
@@ -127,12 +129,14 @@ export default function DuaList({ filter, sort }) {
         }
 
         try {
+            const userIdentifier = user.username || user.firstName || userId
+
             const response = await fetch(`/api/duas/${duaId}/comment`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ comment }),
+                body: JSON.stringify({ userIdentifier, comment }),
             })
             if (!response.ok) {
                 throw new Error('Failed to comment on dua')

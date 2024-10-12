@@ -28,7 +28,7 @@ export async function POST(req, { params }) {
         }
 
         const { id } = params
-        const { comment } = await req.json()
+        const { userIdentifier, comment } = await req.json()
 
         if (!PREDEFINED_COMMENTS.includes(comment)) {
             return NextResponse.json({ error: 'Invalid comment' }, { status: 400 })
@@ -47,7 +47,6 @@ export async function POST(req, { params }) {
         }
 
         const user = await currentUser()
-        const userIdentifier = `${user.firstName} ${user.lastName}`
         const profileImageUrl = user.imageUrl
 
         dua.comments.push({
