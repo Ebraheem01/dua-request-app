@@ -15,7 +15,7 @@ export default function DuaRequestForm({ onClose, onSubmit }) {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const userIdentifier = user.firstName || user.username || userId
+            const userIdentifier = user.username || user.firstName || userId
 
             const response = await fetch('/api/duas', {
                 method: 'POST',
