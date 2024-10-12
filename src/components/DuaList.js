@@ -149,6 +149,32 @@ export default function DuaList({ filter, sort }) {
         }
     }
 
+    const handleShare = async (duaId) => {
+        if (!isSignedIn) {
+            toast.error('Please sign in to share this dua')
+            return
+        }
+
+        try {
+            const response = await fetch(`/api/duas/${duaId}/share`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            if (!response.ok) {
+                throw new Error('Failed to generate shareable link')
+            }
+            const data = await response.json()
+
+            // Copy the shareable link to clipboard
+            await navigator.clipboard.writeText(data.shareableLink)
+            toast.success('Shareable link copied to clipboard')
+        } catch (error) {
+            toast.error('An error occurred while generating the shareable link')
+        }
+    }
+
     const toggleCommentOptions = (duaId) => {
         setShowCommentOptions(prev => ({ ...prev, [duaId]: !prev[duaId] }))
     }
@@ -209,7 +235,7 @@ export default function DuaList({ filter, sort }) {
                             <MessageCircle className="mr-1" size={20} />
                             <span>Comment</span>
                         </button>
-                        <button className="flex items-center text-gray-600 hover:text-green-600">
+                        <button onClick={() => handleShare(dua._id)} className="flex items-center text-gray-600 hover:text-green-600">
                             <Share2 className="mr-1" size={20} />
                             <span>Share</span>
                         </button>

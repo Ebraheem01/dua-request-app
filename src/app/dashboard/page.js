@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { UserButton } from '@clerk/nextjs'
 import { PlusCircle, List, Grid, ChevronDown, ChevronUp } from 'lucide-react'
 import DuaRequestForm from '@/components/DuaRequestForm'
+import Nav from '@/components/Nav'
 import Image from 'next/image'
 
 export default function Dashboard() {
@@ -48,21 +49,7 @@ export default function Dashboard() {
 
     return (
         <div className="min-h-screen bg-gray-100">
-            <nav className="bg-white shadow-md fixed top-0 left-0 right-0 z-10">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between items-center h-16">
-                        <Link href="/" className="text-2xl font-bold text-blue-600">
-                            DuaShare
-                        </Link>
-                        <div className="flex items-center space-x-4">
-                            <Link href="/" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
-                                Home
-                            </Link>
-                            <UserButton afterSignOutUrl="/" />
-                        </div>
-                    </div>
-                </div>
-            </nav>
+            <Nav page={"dashboard"} />
 
             <main className="max-w-5xl mx-auto pt-20 pb-12 px-4 sm:px-6 lg:px-8">
                 <div className="bg-white shadow-md rounded-lg p-6 mb-8">
